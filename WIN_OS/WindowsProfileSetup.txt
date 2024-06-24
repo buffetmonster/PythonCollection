@@ -1,0 +1,6 @@
+#The windows powershell console has a profile ps1 file, to find location: $profile
+#for example this might be: C:\Users\theuser\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+#Using this alias we can easily enable the python virtualenv assuming it is setup
+#by editing Microsoft.PowerShell_profile.ps1 we can add some alises related to the powershell
+New-Alias go_virtualenv .\venv\Scripts\activate
+ECHO "Added Alias: go_virtualenv"
