@@ -1,4 +1,5 @@
 import sys
+import logging
 #from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QVBoxLayout, QHBoxLayout
 from PyQt5.QtCore import QTimer, Qt, QTime
@@ -7,6 +8,9 @@ from PyQt5.QtCore import QTimer, Qt, QTime
 POMODORO_DURATION = (25 * 60) 
 SHORT_BREAK_DURATION = (5 * 60)
 
+#logging control
+logging.basicConfig(level=logging.INFO)  #disable debug
+#logging.basicConfig(level=logging.DEBUG)  #enable debug
 #test data (in seconds)
 #_DURATION = (7 * 1) 
 #SHORT_BREAK_DURATION = (2 * 1)
@@ -71,7 +75,7 @@ class PomodoroTimer(QWidget):
 
     def update_timer(self):
         self.current_duration -= 1
-        print (f"current_duration {self.current_duration}")
+        logging.debug (f"current_duration {self.current_duration}")
         self.update_timer_label()
         if self.current_duration <= 0:
             print (f"finished update : self.current_duration {self.current_duration}")
