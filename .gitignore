@@ -8,6 +8,8 @@
 !**/*.bat
 !**/*.sh
 !**/*.ps1
+!**/*.toml
+!**/*.md
 # Ignore any empty directories
 !**/
 # Exclude build directory
