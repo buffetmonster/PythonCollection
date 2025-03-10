@@ -10,6 +10,10 @@
 !**/*.ps1
 !**/*.toml
 !**/*.md
+!**/*.html
+!**/*.css
+!**/*.css.map
+!**/*.scss
 # Ignore any empty directories
 !**/
 # Exclude build directory
