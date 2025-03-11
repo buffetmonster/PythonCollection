@@ -1,0 +1,4 @@
+#additional files to include above default
+!**/*.jsx
+!**/*.js
+!**/*.json
