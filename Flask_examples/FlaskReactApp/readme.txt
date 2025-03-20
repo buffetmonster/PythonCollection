@@ -16,6 +16,8 @@ npm create vite@latest frontend -- --template react
 cd frontend
 npm install <stop here for now>
 #to run
+cd backend
+source ./venv/bin/activate
 python3 main.py
 #in another terminal start the frontent server, it wii be localhost and a port ID
 npm run dev
