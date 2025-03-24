@@ -2,3 +2,5 @@
 !**/*.jsx
 !**/*.js
 !**/*.json
+!**/*.yml
+!**/Dockerfile

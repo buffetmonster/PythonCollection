@@ -1,0 +1,19 @@
+#version is deprecated
+#version: "3.9"
+
+services:
+  backend:
+    container_name: backend_container
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000" # Map host port to container port
+    volumes:
+      - ./backend:/backend # Mount the backend directory
+      #- ./start_backend_interactive_mode.sh:/start_backend_interactive_mode.sh # only needed when running in interative mode
+      - ./requirements.txt:/backend/requirements.txt  #only really needed if using interactive mode
+    #environment:
+      #AUTO_START: "1" # Set to "1" to automatically start, remove to enter interactive mode
+    #tty: true
+    #stdin_open: true
