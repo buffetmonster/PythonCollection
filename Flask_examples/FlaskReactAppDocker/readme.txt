@@ -52,7 +52,8 @@ cd FlaskReactAppDocker/frontend
 #Install Node.js and npm
 sudo apt install nodejs npm
 npm create vite@latest frontend -- --template react
-#once complete
+#once complete revert back stock settings in our git
+git checkout frontend/index.html frontend/src/App.jsx
 cd frontend
 #to install once only
 npm install 
@@ -73,3 +74,12 @@ node    116995 dsw12   27u  IPv4 323591      0t0  TCP localhost:5173->localhost:
 node    116995 dsw12   28u  IPv4 323593      0t0  TCP localhost:5173->localhost:48306 (ESTABLISHED)
 node    116995 dsw12   30u  IPv4 323595      0t0  TCP localhost:5173->localhost:48312 (ESTABLISHED)
 node    116995 dsw12   31u  IPv4 323597      0t0  TCP localhost:5173->localhost:48320 (ESTABLISHED)
+
+#adding docker frontend
+docker compose up frontend --build -d
+
+#note if for debug purposes start without docker env need to adjust file permissions for default USER
+cd frontend
+sudo chown -R dsw12:dsw12 node_modules
+sudo chmod -R 775 node_modules
+npm run dev
