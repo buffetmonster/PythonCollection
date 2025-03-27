@@ -13,9 +13,16 @@ function App() {
   }, []);
 
   const fetchContacts = async () => {
-    const response = await fetch("http://127.0.0.1:5000/contacts");
-    const data = await response.json();
-    setContacts(data.contacts);
+    try {
+      //const response = await fetch("http://backend:5000/contacts");
+      const response = await fetch("http://localhost:5000/contacts");
+      console.log("Response:", response); // Log the response object
+      const data = await response.json();
+      console.log("Data:", data); // Log the parsed JSON data
+      setContacts(data.contacts);
+    } catch (error) {
+      console.error("Fetch error:", error); // Log any errors
+    }
   };
 
   const closeModal = () => {

@@ -83,3 +83,43 @@ cd frontend
 sudo chown -R dsw12:dsw12 node_modules
 sudo chmod -R 775 node_modules
 npm run dev
+
+
+#random stuff
+
+docker compose build --no-cache frontend
+docker compose up frontend -d
+docker compose exec frontend ls /app/node_modules/native.txt -alt
+
+
+docker compose up frontend --build -d
+
+#checks without detaching
+docker compose up frontend --build
+docker exec -it frontend_container curl http://backend:5000/contacts
+docker exec -it frontend_container ls /app/frontend/src/ContactList.jsx
+docker compose exec frontend ash
+ping backend
+curl http://backend:5000/contacts
+
+/app/frontend # npx vite --host 127.0.0.1
+Port 5173 is in use, trying another one...
+
+  VITE v6.2.3  ready in 148 ms
+
+  ➜  Local:   http://127.0.0.1:5174/
+http://localhost:5174/ on browser nothing
+
+or
+
+curl http://127.0.0.1:5174/
+
+netstat -tuln | grep LISTEN
+docker ps
+docker stop $(docker ps -aq)
+
+
+dsw12@Debian:~/github/PythonCollection/Flask_examples/FlaskReactAppDocker/frontend$ls ./src/
+App.css  App.jsx  assets  ContactForm.jsx  ContactList.jsx  index.css  main.jsx
+
+const response = await fetch("http://backend:5000/contacts");

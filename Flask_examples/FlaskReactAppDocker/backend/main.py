@@ -1,7 +1,9 @@
 from flask import request, jsonify
 from config import app, db
 from models import Contact
+from flask_cors import CORS  # Import CORS
 
+CORS(app)  # Enable CORS for all routes
 
 @app.route("/contacts", methods=["GET"])
 def get_contacts():
