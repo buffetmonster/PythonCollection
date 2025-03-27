@@ -8,8 +8,8 @@ EXPOSE 5000
 ENV TZ=Etc/UTC
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN apt-get update
-RUN apt-get install git python3 python3-pip python3-venv -y
+#RUN apt-get update
+#RUN apt-get install git python3 python3-pip python3-venv -y
 
 # Set working directory for the backend
 WORKDIR /backend
@@ -28,7 +28,8 @@ RUN . venv/bin/activate
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Run the backend application (adjust the command as needed)
-CMD ["python3", "main.py"] # or gunicorn, uvicorn, etc.
+#this isn't working for some reason, starting in the yml file instead which is better anyway
+#CMD ["python3", "main.py"] # or gunicorn, uvicorn, etc.
 # Check if AUTO_START is set if not enter interactive mode
 # For interactive mode
 # . venv/bin/activate
