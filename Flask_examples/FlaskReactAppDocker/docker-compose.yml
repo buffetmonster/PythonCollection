@@ -9,6 +9,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - "5000:5000" # Map host port to container port
+      - "5678:5678" # Map debugging port
     networks:
       - mynetwork
     #volumes:
@@ -16,14 +17,21 @@ services:
       #- ./start_backend_interactive_mode.sh:/start_backend_interactive_mode.sh # only needed when running in interative mode
       #- ./requirements.txt:/backend/requirements.txt  #only really needed if using interactive mode
     #environment:
-      #AUTO_START: "1" # Set to "1" to automatically start, remove to enter interactive mode
+      #- DEBUGFE=1
+      #- DEBUGFE: "true" # Enable debugging
+      #- AUTO_START: "1" # Set to "1" to automatically start, remove to enter interactive mode
     #tty: true
     #stdin_open: true
     #for debug purposes, add to enter console debug mode
     #command: sleep infinity
-    command: python3 main.py
-
-
+    #command: python3 main.py
+    #command: sh -c "if [ \"$AUTO_START\" = \"1\" ]; then python3 -m debugpy --listen 5678 --wait-for-client main.py; else python3 main.py; fi"
+    environment:
+      - DEBUGFE=1
+    #command: sh -c "if [ \"true\" = \"true\" ]; then python3 -m debugpy #--listen 5678 --wait-for-client main.py; else python3 main.py; fi"
+    #command: sh -c "if [ \"true\" = \"true\" ]; then python3 -Xfrozen_modules=off -m debugpy --listen 5678 --wait-for-client main.py; else python3 main.py; fi"
+    #command: python3 -Xfrozen_modules=off -m debugpy --listen 5678 --wait-for-client main.py
+    command: python3 -Xfrozen_modules=off -m debugpy --listen 0.0.0.0:5678 --wait-for-client main.py
   frontend:
     container_name: frontend_container
     build:

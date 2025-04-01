@@ -3,13 +3,14 @@ FROM python:3.12-slim-bookworm
 
 # Expose port 5000 (adjust if your backend uses a different port)
 EXPOSE 5000
-
+EXPOSE 5678
 # Set the time zone
 ENV TZ=Etc/UTC
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 #RUN apt-get update
 #RUN apt-get install git python3 python3-pip python3-venv -y
+RUN apt-get update && apt-get install -y procps net-tools # For debug purposes
 
 # Set working directory for the backend
 WORKDIR /backend
@@ -26,6 +27,8 @@ RUN . venv/bin/activate
 
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
+#for debug only
+RUN pip install debugpy # Install debugpy
 
 # Run the backend application (adjust the command as needed)
 #this isn't working for some reason, starting in the yml file instead which is better anyway
