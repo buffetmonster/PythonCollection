@@ -3,6 +3,7 @@
     "configurations": [
         {
             "name": "Python: Attach to Docker",
+            "justMyCode": false, // Added to get debugger working, but also debugs library modules
             "type": "python",
             "request": "attach",
             "connect": {
