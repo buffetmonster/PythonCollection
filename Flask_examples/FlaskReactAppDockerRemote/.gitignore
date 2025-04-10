@@ -1,0 +1,30 @@
+# Frontend
+frontend/node_modules
+frontend/build
+
+# Backend
+backend/.venv
+backend/venv
+backend/__pycache__/
+backend/.pytest_cache
+backend/.coverage
+
+# Environment variables (be careful about what you ignore)
+.env
+*.env.local
+*.env.development
+*.env.test
+*.env.production
+
+# IDE specific files
+.idea/
+.vscode/
+*.project
+*.pydevproject
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Docker related (optional, but can be useful if you have local volumes)
+# docker-compose.override.yml
