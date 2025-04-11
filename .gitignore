@@ -17,6 +17,7 @@
 !**/*.js
 !**/*.json
 !**/*.yml
+!**/*.conf
 !**/*Dockerfile
 # Ignore any empty directories
 !**/

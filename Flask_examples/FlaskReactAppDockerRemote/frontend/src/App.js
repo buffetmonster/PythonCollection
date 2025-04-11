@@ -8,7 +8,9 @@ function App() {
   useEffect(() => {
     const fetchContacts = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/contacts'); // Adjust if needed
+        //const response = await fetch('http://localhost:5000/api/contacts'); // this will only work for local test on same machine
+        //const response = await fetch('http://192.168.1.197:5000/api/contacts') //this will work on local machine, but is messy
+        const response = await fetch('/api/contacts') //prefered solution but relies on nginx to do the port mapping
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
