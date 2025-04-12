@@ -15,7 +15,8 @@ function App() {
   const fetchContacts = async () => {
     try {
       //const response = await fetch("http://backend:5000/contacts");
-      const response = await fetch("http://localhost:5000/contacts");
+      //const response = await fetch("http://localhost:5000/contacts");
+      const response = await fetch("/api/contacts");
       console.log("Response:", response); // Log the response object
       const data = await response.json();
       console.log("Data:", data); // Log the parsed JSON data

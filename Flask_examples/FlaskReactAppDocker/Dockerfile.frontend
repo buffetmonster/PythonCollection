@@ -13,23 +13,26 @@ RUN npx create-vite@latest frontend --template react
 WORKDIR /app/frontend
 
 # Copy package.json and package-lock.json
-#COPY frontend/package*.json ./
-COPY frontend/index.html ./
-copy frontend/src/App.jsx ./src/
-copy frontend/src/ContactForm.jsx ./src/
-copy frontend/src/ContactList.jsx ./src/
+COPY frontend/package*.json ./
+#COPY frontend/index.html ./
+#copy frontend/src/App.jsx ./src/
+#copy frontend/src/ContactForm.jsx ./src/
+#copy frontend/src/ContactList.jsx ./src/
 # Install dependencies
 RUN npm install
 
 #RUN ls -alt node_modules/.bin
 
 # Copy the rest of the frontend code
-#COPY frontend/ .
+COPY frontend/ .
 
 # Expose the port your React app runs on (usually 5173 for Vite)
-EXPOSE 5173
+#EXPOSE 5173
+#changed as works with Nginx settings
+EXPOSE 3000
 
 # Start the development server
+#now done in yaml
 #CMD ["npx", "run", "dev"]
 #CMD ["npm", "run", "dev"]
 #CMD ["npm", "run", "dev", "--host", "0.0.0.0"]

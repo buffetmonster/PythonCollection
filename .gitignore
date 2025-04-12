@@ -6,6 +6,7 @@
 !**/*.txt
 #for linux and Win env
 !**/*.bat
+!**/*.env
 !**/*.sh
 !**/*.ps1
 !**/*.toml

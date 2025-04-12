@@ -16,7 +16,8 @@ const ContactForm = ({ existingContact = {}, updateCallback }) => {
             email
         }
         //const url = "http://backend:5000/" + (updating ? `update_contact/${existingContact.id}` : "create_contact")
-        const url = "http://localhost:5000/" + (updating ? `update_contact/${existingContact.id}` : "create_contact")
+        //const url = "http://localhost:5000/" + (updating ? `update_contact/${existingContact.id}` : "create_contact")
+        const url = "/api/" + (updating ? `update_contact/${existingContact.id}` : "create_contact")
         const options = {
             method: updating ? "PATCH" : "POST",
             headers: {

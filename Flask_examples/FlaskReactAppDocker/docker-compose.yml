@@ -24,21 +24,22 @@ services:
     #stdin_open: true
     #for debug purposes, add to enter console debug mode
     #command: sleep infinity
-    #command: python3 main.py
     #command: sh -c "if [ \"$AUTO_START\" = \"1\" ]; then python3 -m debugpy --listen 5678 --wait-for-client main.py; else python3 main.py; fi"
     environment:
       - DEBUGFE=1
     #command: sh -c "if [ \"true\" = \"true\" ]; then python3 -m debugpy #--listen 5678 --wait-for-client main.py; else python3 main.py; fi"
     #command: sh -c "if [ \"true\" = \"true\" ]; then python3 -Xfrozen_modules=off -m debugpy --listen 5678 --wait-for-client main.py; else python3 main.py; fi"
     #command: python3 -Xfrozen_modules=off -m debugpy --listen 5678 --wait-for-client main.py
-    command: python3 -Xfrozen_modules=off -m debugpy --listen 0.0.0.0:5678 --wait-for-client main.py
+    #command: python3 -Xfrozen_modules=off -m debugpy --listen 0.0.0.0:5678 --wait-for-client main.py
+    command: python3 main.py
   frontend:
     container_name: frontend_container
     build:
       context: .
       dockerfile: Dockerfile.frontend
     ports:
-      - "5173:5173" # Map host port 3000 to container port 5173
+      #- "5173:5173" # Map host port 3000 to container port 5173
+      - "3000:3000" # Map host port 3000 to container port 3000, for Nginx
     networks:
       - mynetwork
     #volumes:
@@ -49,8 +50,8 @@ services:
     #command: npm run dev --host 127.0.0.1
     #command: npx vite --host 127.0.0.1
     #command: npx vite --host 127.0.0.1 --force
-    #command: npx vite --host 0.0.0.0 --force
-    command: npx vite --host 0.0.0.0
+    command: npx vite --host 0.0.0.0 --force
+    #command: npx vite --host 0.0.0.0
 networks:
   mynetwork:
     driver: bridge
